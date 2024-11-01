@@ -36,8 +36,10 @@ extern "C"
 	
 typedef struct _Package
 {
-    uint8_t  Head_1;
-    uint8_t  Head_2;
+    uint8_t  Head_0;
+    uint8_t  Head_1;    
+	  uint8_t  End_0;
+    uint8_t  End_1;
     uint8_t  frame_id;
     uint8_t  length;
     uint8_t  rxIndex=0;
@@ -57,8 +59,7 @@ typedef struct _Package
         uint8_t  crc_buff[2]; // CRC 校验的字节形式
     }check_code;   //虽然不知道是要干什么的，但是先复制过来
     uint16_t crc_calculated = 0;
-    uint8_t  End_1;
-    uint8_t  End_2;
+
 }Package;
 
 class SerialDevice
@@ -73,9 +74,10 @@ class SerialDevice
 
     Package rx_frame_mat;
     uint8_t receive_ok_flag = 0;
+		uint8_t RxPK_ok_flag = 0;
     static SerialDevice *instances_[MAX_INSTANCES]; // 保存所有实例(最多八个)
     static int instanceCount_;                      // 记录保存实例个数
-
+	
     enum rxState
     {
         WAITING_FOR_HEADER_0,
@@ -90,8 +92,7 @@ class SerialDevice
     } state_;
 
     SerialDevice(UART_HandleTypeDef *huartx,bool enableCrcCheck);   
-    void SetRxPackage_identity(uint8_t head1,uint8_t head2,uint8_t end1,
-                               uint8_t end2 ,uint8_t id   ,uint8_t length);
+    void SetRxPackage_identity(Package PKD);
     bool SendByte   (uint8_t  data);
     bool SendString (char    *data);
     bool SendArray  (uint8_t *data, uint8_t data_len);
@@ -100,7 +101,7 @@ class SerialDevice
     bool SendInt16  (int16_t  data);
     bool SendPackage(Package    *package);
     void startUartReceiveIT();
-    void handleReceiveData(uint8_t byte);//串口接收数据处理函数
+    virtual void handleReceiveData(uint8_t byte) = 0;//串口接收数据处理函数
 
     //static void registerInstance(SerialDevice *instance);
 };
