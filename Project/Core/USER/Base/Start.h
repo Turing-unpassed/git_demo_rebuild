@@ -14,6 +14,7 @@ extern "C"
 
 /*在此处向.c文件声明函数：       begin*/
 void Start_tasks(void);	
+void before_Start_tasks(void);
 /*函数声明end*/	
 	
 #ifdef __cplusplus
@@ -37,7 +38,9 @@ void Start_tasks(void);
 
 
 /*在此处进行函数定义：       begin*/	
-//extern "C" 
+
+//如果是要在.C调用，要放到上面（翻上去看）
+
 /*函数定义end*/	
 
 #endif

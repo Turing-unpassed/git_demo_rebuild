@@ -25,16 +25,6 @@ SerialDevice::SerialDevice(UART_HandleTypeDef *huartx,
     init_status = true;
 }
 
-void SerialDevice::SetRxPackage_identity(uint8_t head1,uint8_t head2,
-            uint8_t end1,uint8_t end2 ,uint8_t id   ,uint8_t length)
-{
-    rx_frame_mat.Head_1 = head1;
-    rx_frame_mat.Head_2 = head2;
-    rx_frame_mat.End_1  = end1;
-    rx_frame_mat.End_2  = end2;
-    rx_frame_mat.frame_id = id;
-    rx_frame_mat.length = length;
-}
 
 bool SerialDevice::SendByte(uint8_t data)
 {
@@ -137,42 +127,22 @@ bool SerialDevice::SendInt16(int16_t data)
 
     return true;  // 发送成功
 }
-//未完成
-bool SerialDevice::SendPackage(Package *package)
-{
-    if (huart_ == nullptr) {
-        return false;  // 如果 UART 句柄为空，返回失败
-    }
-    uint8_t sendBuffer[Max_Package_Length];
-    sendBuffer[0] = (*package).Head_1;
-    sendBuffer[1] = (*package).Head_2;
-    sendBuffer[2] = (*package).frame_id;
-    sendBuffer[3] = (*package).length;
-    for(uint8_t i = 0;i<(*package).length;i++)//向驮载数据的数组填充数据
-    {
-        sendBuffer[4+i] = (*package).PK_Data.u8_PK_data[i];
-    }
-    /*计算CRC校验值,存入到联合体check_code中，由于联合体是共享内存，
-    所以crc_buff[0]刚好是crc_code的低8位，[1]为高八位*/
-    (*package).check_code.crc_code = CRC16_Table((*package).PK_Data.u8_PK_data, 
-                                                 (*package).length);
-    sendBuffer[4+(*package).length] =  (*package).check_code.crc_buff[0];
-    sendBuffer[5+(*package).length] =  (*package).check_code.crc_buff[1];
-    sendBuffer[6+(*package).length] =  (*package).End_1;
-    sendBuffer[7+(*package).length] =  (*package).End_2;    
 
-    HAL_UART_Transmit(huart_, sendBuffer, (*package).length + 8, HAL_MAX_DELAY);
-    return true;
-}
 
 extern "C" void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-    uint8_t rxByte;
-    if(huart == &huart6)
-    {
-        SerialDevice::instances_[0]->SendByte(0x22);
-        HAL_UART_Receive_IT(&huart6, SerialDevice::instances_[0]->rxBuffer_, RX_BUFFER_SIZE);
-    }
+  uint8_t rxByte;
+	for(int i = 0;i<SerialDevice::instanceCount_;i++)
+	{
+		if(SerialDevice::instances_[i]->huart_ == huart)
+		{	 
+			 rxByte = SerialDevice::instances_[i]->rxBuffer_[0]; 
+			 SerialDevice::instances_[i]->handleReceiveData(rxByte);
+             HAL_UART_Receive_IT(SerialDevice::instances_[i]->huart_, 
+                                SerialDevice::instances_[i]->rxBuffer_, 
+                                RX_BUFFER_SIZE);
+		}
+	}
     // // 获取 UART 接收的字节
     // for (int i = 0; i < SerialDevice::instanceCount_; i++)
     // {
@@ -185,105 +155,8 @@ extern "C" void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     // }
 }
 
-void SerialDevice::handleReceiveData(uint8_t byte)
-{
-    if( 1 == receive_ok_flag)
-    {   
-        /*当receive_ok_flag=1时，说明数据已经接收完毕但是未更新完毕
-        此时若是重新接收，可能导致原先的数据被覆盖，故直接返回，这么做的弊端是会丢数据
-        另一个方法是启用DMA来接收数据，还没实现，有时间再来搞*/
-        
-        return;
-    }
-    switch (state_)
-    {
-    case WAITING_FOR_HEADER_0:
-        if (byte == rx_frame_mat.Head_1)
-        {
-            state_ = WAITING_FOR_HEADER_1;
-            rx_frame_mat.Head_1 = byte; // 存储一号帧头
-        }
-        break;
-    case WAITING_FOR_HEADER_1:
-        if (byte == rx_frame_mat.Head_2)
-        {
-            state_ = WAITING_FOR_ID;
-            rx_frame_mat.Head_2 = byte; // 存储二号帧头
-        }
-        else
-        {
-            state_ = WAITING_FOR_HEADER_0;
-        }
-        break;
-    case WAITING_FOR_ID:
-        rx_frame_mat.frame_id = byte; // 存储帧ID
-        state_ = WAITING_FOR_LENGTH;
-        break;
-    case WAITING_FOR_LENGTH:
-        rx_frame_mat.length = byte; // 存储数据长度
-        rx_frame_mat.rxIndex = 0;
-        state_ = WAITING_FOR_DATA;
-        break;
-    case WAITING_FOR_DATA:
-    /*存储接收到的数据，存入到联合体的数据成员u8_PK_data数组中，如果接收的数据本身是其他类型的数据，
-    则在函数之后再进行转换。（直接利用联合体的共享空间特性）*/
-        rx_frame_mat.PK_Data.u8_PK_data[rx_frame_mat.rxIndex++] = byte;
-        if (rx_frame_mat.rxIndex >= rx_frame_mat.length)
-        {
-            state_ = WAITING_FOR_CRC_0;
-        }
-        break;
-    case WAITING_FOR_CRC_0:
-        rx_frame_mat.check_code.crc_buff[0] = byte; // 存储 CRC 校验的高字节
-        state_ = WAITING_FOR_CRC_1;
-        break;
-    case WAITING_FOR_CRC_1:
-        rx_frame_mat.check_code.crc_buff[1] = byte; // 存储 CRC 校验的低字节
-        state_ = WAITING_FOR_END_0;
-        break;
-    case WAITING_FOR_END_0:
-        if (byte == rx_frame_mat.End_1)
-        {
-            state_ = WAITING_FOR_END_1;
-            rx_frame_mat.End_1 = byte; // 存储帧尾
-        }
-        else
-        {
-            state_ = WAITING_FOR_HEADER_0;
-        }
-        break;
-    case WAITING_FOR_END_1:
-        if (byte == rx_frame_mat.End_2){
-        
-            rx_frame_mat.End_2 = byte; // 存储帧尾
-            //如果开启CRC校验就就进入校验
-            if (enableCrcCheck_){
-            
-                // 计算 CRC 并与接收到的 CRC 进行比较
-                rx_frame_mat.crc_calculated = CRC16_Table(rx_frame_mat.PK_Data.u8_PK_data, 
-                                                          rx_frame_mat.length);
-                //如果数据校验失败，则丢弃该帧，重新等待帧头
-                if (rx_frame_mat.crc_calculated != rx_frame_mat.check_code.crc_code){
-                
-                    state_ = WAITING_FOR_HEADER_0;
-                    break;
-                }
-            }   //前面的都通过之后，说明接收数据完成，置标志位，并等待下一帧
-                state_ = WAITING_FOR_HEADER_0;
-                receive_ok_flag = 1;//接收完毕之后置标志位，同时在子类中实现更新数据的函数并调用
-                //同时需要强调的是，一定要在更新数据函数的最后将该标志位重新赋值为0！！，否则无法再次接收数据
-        }
-        else 
-        {   //帧尾2错误，则丢弃该帧，重新等待包头
-            state_ = WAITING_FOR_HEADER_0;
-        }
-        break;
-    default:
-        state_ = WAITING_FOR_HEADER_0;
-        break;
-    }//end_switch
-    
-}
+
+
 
 
 // CRC16 查表
