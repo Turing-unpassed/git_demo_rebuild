@@ -140,11 +140,11 @@ extern "C" void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		{	 
 			 rxByte = SerialDevice::instances_[i]->rxBuffer_[0]; 
 			 SerialDevice::instances_[i]->handleReceiveData(rxByte);
-<<<<<<< HEAD
-             HAL_UART_Receive_IT(SerialDevice::instances_[i]->huart_, 
-                                SerialDevice::instances_[i]->rxBuffer_, 
-                                RX_BUFFER_SIZE);
-=======
+
+       HAL_UART_Receive_IT(SerialDevice::instances_[i]->huart_, 
+                           SerialDevice::instances_[i]->rxBuffer_,
+													 500);
+
 
 		}
 	}
