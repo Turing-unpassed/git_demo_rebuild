@@ -143,7 +143,7 @@ extern "C" void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
        HAL_UART_Receive_IT(SerialDevice::instances_[i]->huart_, 
                            SerialDevice::instances_[i]->rxBuffer_,
-													 500);
+						   RX_BUFFER_SIZE);
 
 
 		}
