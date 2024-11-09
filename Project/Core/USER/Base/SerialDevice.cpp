@@ -26,6 +26,7 @@ SerialDevice::SerialDevice(UART_HandleTypeDef *huartx,
 }
 
 
+
 bool SerialDevice::SendByte(uint8_t data)
 {
     if (huart_ == nullptr) {
@@ -129,18 +130,22 @@ bool SerialDevice::SendInt16(int16_t data)
 }
 
 
+
 extern "C" void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-  uint8_t rxByte;
+  uint8_t rxByte  ;
 	for(int i = 0;i<SerialDevice::instanceCount_;i++)
 	{
 		if(SerialDevice::instances_[i]->huart_ == huart)
 		{	 
 			 rxByte = SerialDevice::instances_[i]->rxBuffer_[0]; 
 			 SerialDevice::instances_[i]->handleReceiveData(rxByte);
+<<<<<<< HEAD
              HAL_UART_Receive_IT(SerialDevice::instances_[i]->huart_, 
                                 SerialDevice::instances_[i]->rxBuffer_, 
                                 RX_BUFFER_SIZE);
+=======
+
 		}
 	}
     // // 获取 UART 接收的字节
@@ -154,9 +159,6 @@ extern "C" void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     //     }
     // }
 }
-
-
-
 
 
 // CRC16 查表
