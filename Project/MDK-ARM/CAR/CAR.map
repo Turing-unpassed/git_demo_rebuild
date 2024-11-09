@@ -4376,7 +4376,7 @@ Image Symbol Table
     HAL_UART_Init                            0x080027a1   Thumb Code   158  stm32f4xx_hal_uart.o(.text.HAL_UART_Init)
     HAL_UART_MspInit                         0x08002841   Thumb Code   396  usart.o(.text.HAL_UART_MspInit)
     HAL_UART_Receive_IT                      0x080029cd   Thumb Code    86  stm32f4xx_hal_uart.o(.text.HAL_UART_Receive_IT)
-    HAL_UART_RxCpltCallback                  0x08002a25   Thumb Code   128  serialdevice.o(.text.HAL_UART_RxCpltCallback)
+    HAL_UART_RxCpltCallback                  0x08002a25   Thumb Code   126  serialdevice.o(.text.HAL_UART_RxCpltCallback)
     HAL_UART_TxCpltCallback                  0x08002aa5   Thumb Code     8  stm32f4xx_hal_uart.o(.text.HAL_UART_TxCpltCallback)
     HardFault_Handler                        0x08002aad   Thumb Code     4  stm32f4xx_it.o(.text.HardFault_Handler)
     MX_CAN1_Init                             0x08002ab1   Thumb Code    78  can.o(.text.MX_CAN1_Init)
@@ -4635,7 +4635,8 @@ Memory Map of the image
     0x08002840   0x08002840   0x0000018c   Code   RO           71    .text.HAL_UART_MspInit  usart.o
     0x080029cc   0x080029cc   0x00000056   Code   RO         1016    .text.HAL_UART_Receive_IT  stm32f4xx_hal_uart.o
     0x08002a22   0x08002a22   0x00000002   PAD
-    0x08002a24   0x08002a24   0x00000080   Code   RO         1824    .text.HAL_UART_RxCpltCallback  serialdevice.o
+    0x08002a24   0x08002a24   0x0000007e   Code   RO         1824    .text.HAL_UART_RxCpltCallback  serialdevice.o
+    0x08002aa2   0x08002aa2   0x00000002   PAD
     0x08002aa4   0x08002aa4   0x00000008   Code   RO         1090    .text.HAL_UART_TxCpltCallback  stm32f4xx_hal_uart.o
     0x08002aac   0x08002aac   0x00000004   Code   RO           86    .text.HardFault_Handler  stm32f4xx_it.o
     0x08002ab0   0x08002ab0   0x0000004e   Code   RO           49    .text.MX_CAN1_Init  can.o
@@ -4916,7 +4917,7 @@ Image component sizes
        278          0          0          0          0       5689   main.o
       1128         16          0          4          5       3818   port.o
       2604          0          0          0         64      17264   queue.o
-       128          0          0          0         36       7716   serialdevice.o
+       126          0          0          0         36       7716   serialdevice.o
          4          0          0          0          0       3745   start.o
         64         26        392          0       1536        832   startup_stm32f407xx.o
         92          0          0          5          4       7099   stm32f4xx_hal.o
@@ -4940,7 +4941,7 @@ Image component sizes
     ----------------------------------------------------------------------
      24060         64        522         16      21768     273395   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-       162         12          4          3          3          0   (incl. Padding)
+       164         12          4          3          3          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 

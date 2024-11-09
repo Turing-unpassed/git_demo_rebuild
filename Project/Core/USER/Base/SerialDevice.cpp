@@ -139,8 +139,9 @@ extern "C" void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		if(SerialDevice::instances_[i]->huart_ == huart)
 		{	 
 			 rxByte = SerialDevice::instances_[i]->rxBuffer_[0]; 
-			 SerialDevice::instances_[i]->handleReceiveData(rxByte);
-
+             //abc
+			// SerialDevice::instances_[i]->handleReceiveData(rxByte);
+             SerialDevice::instances_[i]->handleReceiveData(rxByte);
        HAL_UART_Receive_IT(SerialDevice::instances_[i]->huart_, 
                            SerialDevice::instances_[i]->rxBuffer_,
 						   RX_BUFFER_SIZE);
