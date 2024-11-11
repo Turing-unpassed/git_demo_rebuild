@@ -39,7 +39,7 @@ void CanDevice::CAN1_Filter_Init(){
     sFilterConfig.FilterMaskIdHigh = 0x00;
     sFilterConfig.FilterMaskIdLow = 0x00;
     sFilterConfig.SlaveStartFilterBank = 14;
-    if(HAL_CAN_ConfigFilter(hcan1, &sFilterConfig)!= HAL_OK){
+    if(HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig)!= HAL_OK){
         Error_Handler();
     }
 
@@ -69,7 +69,7 @@ void CanDevice::CAN2_Filter_Init(){
     sFilterConfig.FilterMaskIdHigh = 0x00;
     sFilterConfig.FilterMaskIdLow = 0x00;
     
-    if(HAL_CAN_ConfigFilter(hcan2, &sFilterConfig)!= HAL_OK){
+    if(HAL_CAN_ConfigFilter(&hcan2, &sFilterConfig) != HAL_OK){
         Error_Handler();
     }
 

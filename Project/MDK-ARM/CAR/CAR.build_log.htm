@@ -3,60 +3,986 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: ¦ÌVision V5.39.0.0
-Copyright (C) 2023 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: 1 1512065397@qq.com, 1, LIC=03C6R-KWC4A-SB8EJ-UG5N8-APN1Y-Z4ZVV
+IDE-Version: ¦ÌVision V5.24.2.0
+Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 5 ay52159wyh@163.com, 6, LIC=76F5U-S538L-Z9CG9-4R5HC-NV0YV-WY116
  
 Tool Versions:
-Toolchain:       MDK-ARM Plus  Version: 5.39.0.0
-Toolchain Path:  D:\keil_new\core\ARM\ARMCLANG\Bin
-C Compiler:      ArmClang.exe V6.21
-Assembler:       Armasm.exe V6.21
-Linker/Locator:  ArmLink.exe V6.21
-Library Manager: ArmAr.exe V6.21
-Hex Converter:   FromElf.exe V6.21
-CPU DLL:         SARMCM3.DLL V5.39.0.0
-Dialog DLL:      DCM.DLL V1.17.5.0
-Target DLL:      CMSIS_AGDI.dll V1.33.16.0
-Dialog DLL:      TCM.DLL V1.56.4.0
+Toolchain:       MDK-ARM Plus  Version: 5.24.1
+Toolchain Path:  D:\keil5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.7
+Assembler:       Armasm.exe V6.7
+Linker/Locator:  ArmLink.exe V6.7
+Library Manager: ArmAr.exe V6.7
+Hex Converter:   FromElf.exe V6.7
+CPU DLL:         SARMCM3.DLL V5.24.1
+Dialog DLL:      DCM.DLL V1.16.0.0
+Target DLL:      CMSIS_AGDI.dll V1.28.3.0
+Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
-E:\Robot_Project\MY\CAR\Project\MDK-ARM\CAR.uvprojx
-Project File Date:  10/30/2024
+D:\cpp_rebuild\git_demo_rebuild\Project\MDK-ARM\CAR.uvprojx
+Project File Date:  11/11/2024
 
 <h2>Output:</h2>
-*** Using Compiler 'V6.21', folder: 'D:\keil_new\core\ARM\ARMCLANG\Bin'
+*** Using Compiler 'V6.7', folder: 'D:\keil5\ARM\ARMCLANG\Bin'
 Build target 'CAR'
-compiling SerialDevice.cpp...
+../Core/Src/freertos.c(21): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected identifier or '('
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected identifier or '('
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected identifier or '('
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+8 errors generated.
+compiling freertos.c...
+../Core/Src/main.c(21): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2\cmsis_os.h(126): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected identifier or '('
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected identifier or '('
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected identifier or '('
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+8 errors generated.
+compiling main.c...
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c(38): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected identifier or '('
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected identifier or '('
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected identifier or '('
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c(592): warning: implicit declaration of function 'vPortRaiseBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+                configASSERT( puxStackBuffer != NULL );
+                ^
+../Core/Inc\FreeRTOSConfig.h(154): note: expanded from macro 'configASSERT'
+#define configASSERT( x ) if ((x) == 0) {taskDISABLE_INTERRUPTS(); for( ;; );}
+                                         ^
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h(212): note: expanded from macro 'taskDISABLE_INTERRUPTS'
+#define taskDISABLE_INTERRUPTS()        portDISABLE_INTERRUPTS()
+                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(105): note: expanded from macro 'portDISABLE_INTERRUPTS'
+#define portDISABLE_INTERRUPTS()                                vPortRaiseBASEPRI()
+                                                                ^
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c(1058): warning: implicit declaration of function 'pxPortInitialiseStack' is invalid in C99 [-Wimplicit-function-declaration]
+                        pxNewTCB->pxTopOfStack = pxPortInitialiseStack( pxTopOfStack, pxTaskCode, pvParameters );
+                                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c(1058): warning: incompatible integer to pointer conversion assigning to 'volatile StackType_t *' (aka 'volatile unsigned int *') from 'int' [-Wint-conversion]
+                        pxNewTCB->pxTopOfStack = pxPortInitialiseStack( pxTopOfStack, pxTaskCode, pvParameters );
+                                               ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c(1146): warning: implicit declaration of function '__dsb' is invalid in C99 [-Wimplicit-function-declaration]
+                        taskYIELD_IF_USING_PREEMPTION();
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c(64): note: expanded from macro 'taskYIELD_IF_USING_PREEMPTION'
+        #define taskYIELD_IF_USING_PREEMPTION() portYIELD_WITHIN_API()
+                                                ^
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(746): note: expanded from macro 'portYIELD_WITHIN_API'
+        #define portYIELD_WITHIN_API portYIELD
+                                     ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(90): note: expanded from macro 'portYIELD'
+        __dsb( portSY_FULL_READ_WRITE );                                                                                        \
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c(1146): warning: implicit declaration of function '__isb' is invalid in C99 [-Wimplicit-function-declaration]
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c(64): note: expanded from macro 'taskYIELD_IF_USING_PREEMPTION'
+        #define taskYIELD_IF_USING_PREEMPTION() portYIELD_WITHIN_API()
+                                                ^
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(746): note: expanded from macro 'portYIELD_WITHIN_API'
+        #define portYIELD_WITHIN_API portYIELD
+                                     ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(91): note: expanded from macro 'portYIELD'
+        __isb( portSY_FULL_READ_WRITE );                                                                                        \
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c(1523): warning: implicit declaration of function 'ulPortRaiseBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+                uxSavedInterruptState = portSET_INTERRUPT_MASK_FROM_ISR();
+                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(109): note: expanded from macro 'portSET_INTERRUPT_MASK_FROM_ISR'
+#define portSET_INTERRUPT_MASK_FROM_ISR()               ulPortRaiseBASEPRI()
+                                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c(1530): warning: implicit declaration of function 'vPortSetBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+                portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptState );
+                ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(110): note: expanded from macro 'portCLEAR_INTERRUPT_MASK_FROM_ISR'
+#define portCLEAR_INTERRUPT_MASK_FROM_ISR(x)    vPortSetBASEPRI(x)
+                                                ^
+7 warnings and 8 errors generated.
+compiling tasks.c...
+../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c(38): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected identifier or '('
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected identifier or '('
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected identifier or '('
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c(232): warning: implicit declaration of function 'vPortRaiseBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+                        configASSERT( xBufferSizeBytes > sbBYTES_TO_STORE_MESSAGE_LENGTH );
+                        ^
+../Core/Inc\FreeRTOSConfig.h(154): note: expanded from macro 'configASSERT'
+#define configASSERT( x ) if ((x) == 0) {taskDISABLE_INTERRUPTS(); for( ;; );}
+                                         ^
+../Middlewares/Third_Party/FreeRTOS/Source/include\task.h(212): note: expanded from macro 'taskDISABLE_INTERRUPTS'
+#define taskDISABLE_INTERRUPTS()        portDISABLE_INTERRUPTS()
+                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(105): note: expanded from macro 'portDISABLE_INTERRUPTS'
+#define portDISABLE_INTERRUPTS()                                vPortRaiseBASEPRI()
+                                                                ^
+../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c(643): warning: implicit declaration of function 'ulPortRaiseBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+                        sbSEND_COMPLETE_FROM_ISR( pxStreamBuffer, pxHigherPriorityTaskWoken );
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c(115): note: expanded from macro 'sbSEND_COMPLETE_FROM_ISR'
+                uxSavedInterruptStatus = ( UBaseType_t ) portSET_INTERRUPT_MASK_FROM_ISR();             \
+                                                         ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(109): note: expanded from macro 'portSET_INTERRUPT_MASK_FROM_ISR'
+#define portSET_INTERRUPT_MASK_FROM_ISR()               ulPortRaiseBASEPRI()
+                                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c(643): warning: implicit declaration of function 'vPortSetBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c(126): note: expanded from macro 'sbSEND_COMPLETE_FROM_ISR'
+                portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );                                    \
+                ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(110): note: expanded from macro 'portCLEAR_INTERRUPT_MASK_FROM_ISR'
+#define portCLEAR_INTERRUPT_MASK_FROM_ISR(x)    vPortSetBASEPRI(x)
+                                                ^
+3 warnings and 8 errors generated.
+compiling stream_buffer.c...
+../Middlewares/Third_Party/FreeRTOS/Source/croutine.c(28): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected identifier or '('
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected identifier or '('
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected identifier or '('
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+8 errors generated.
+compiling croutine.c...
+../Middlewares/Third_Party/FreeRTOS/Source/queue.c(36): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected identifier or '('
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected identifier or '('
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected identifier or '('
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+../Middlewares/Third_Party/FreeRTOS/Source/queue.c(259): warning: implicit declaration of function 'vPortRaiseBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+        configASSERT( pxQueue );
+        ^
+../Core/Inc\FreeRTOSConfig.h(154): note: expanded from macro 'configASSERT'
+#define configASSERT( x ) if ((x) == 0) {taskDISABLE_INTERRUPTS(); for( ;; );}
+                                         ^
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h(212): note: expanded from macro 'taskDISABLE_INTERRUPTS'
+#define taskDISABLE_INTERRUPTS()        portDISABLE_INTERRUPTS()
+                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(105): note: expanded from macro 'portDISABLE_INTERRUPTS'
+#define portDISABLE_INTERRUPTS()                                vPortRaiseBASEPRI()
+                                                                ^
+../Middlewares/Third_Party/FreeRTOS/Source/queue.c(281): warning: implicit declaration of function '__dsb' is invalid in C99 [-Wimplicit-function-declaration]
+                                        queueYIELD_IF_USING_PREEMPTION();
+                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/queue.c(89): note: expanded from macro 'queueYIELD_IF_USING_PREEMPTION'
+        #define queueYIELD_IF_USING_PREEMPTION() portYIELD_WITHIN_API()
+                                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(746): note: expanded from macro 'portYIELD_WITHIN_API'
+        #define portYIELD_WITHIN_API portYIELD
+                                     ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(90): note: expanded from macro 'portYIELD'
+        __dsb( portSY_FULL_READ_WRITE );                                                                                        \
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/queue.c(281): warning: implicit declaration of function '__isb' is invalid in C99 [-Wimplicit-function-declaration]
+../Middlewares/Third_Party/FreeRTOS/Source/queue.c(89): note: expanded from macro 'queueYIELD_IF_USING_PREEMPTION'
+        #define queueYIELD_IF_USING_PREEMPTION() portYIELD_WITHIN_API()
+                                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(746): note: expanded from macro 'portYIELD_WITHIN_API'
+        #define portYIELD_WITHIN_API portYIELD
+                                     ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(91): note: expanded from macro 'portYIELD'
+        __isb( portSY_FULL_READ_WRITE );                                                                                        \
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/queue.c(981): warning: implicit declaration of function 'ulPortRaiseBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+        uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(109): note: expanded from macro 'portSET_INTERRUPT_MASK_FROM_ISR'
+#define portSET_INTERRUPT_MASK_FROM_ISR()               ulPortRaiseBASEPRI()
+                                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/queue.c(1106): warning: implicit declaration of function 'vPortSetBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+        portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(110): note: expanded from macro 'portCLEAR_INTERRUPT_MASK_FROM_ISR'
+#define portCLEAR_INTERRUPT_MASK_FROM_ISR(x)    vPortSetBASEPRI(x)
+                                                ^
+5 warnings and 8 errors generated.
+compiling queue.c...
+../Middlewares/Third_Party/FreeRTOS/Source/list.c(30): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected identifier or '('
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected identifier or '('
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected identifier or '('
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+8 errors generated.
+compiling list.c...
+../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c(37): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected identifier or '('
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected identifier or '('
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected identifier or '('
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c(98): warning: implicit declaration of function 'vPortRaiseBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+                configASSERT( pxEventGroupBuffer );
+                ^
+../Core/Inc\FreeRTOSConfig.h(154): note: expanded from macro 'configASSERT'
+#define configASSERT( x ) if ((x) == 0) {taskDISABLE_INTERRUPTS(); for( ;; );}
+                                         ^
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h(212): note: expanded from macro 'taskDISABLE_INTERRUPTS'
+#define taskDISABLE_INTERRUPTS()        portDISABLE_INTERRUPTS()
+                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(105): note: expanded from macro 'portDISABLE_INTERRUPTS'
+#define portDISABLE_INTERRUPTS()                                vPortRaiseBASEPRI()
+                                                                ^
+../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c(255): warning: implicit declaration of function '__dsb' is invalid in C99 [-Wimplicit-function-declaration]
+                        portYIELD_WITHIN_API();
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(746): note: expanded from macro 'portYIELD_WITHIN_API'
+        #define portYIELD_WITHIN_API portYIELD
+                                     ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(90): note: expanded from macro 'portYIELD'
+        __dsb( portSY_FULL_READ_WRITE );                                                                                        \
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c(255): warning: implicit declaration of function '__isb' is invalid in C99 [-Wimplicit-function-declaration]
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(746): note: expanded from macro 'portYIELD_WITHIN_API'
+        #define portYIELD_WITHIN_API portYIELD
+                                     ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(91): note: expanded from macro 'portYIELD'
+        __isb( portSY_FULL_READ_WRITE );                                                                                        \
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c(509): warning: implicit declaration of function 'ulPortRaiseBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+        uxSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(109): note: expanded from macro 'portSET_INTERRUPT_MASK_FROM_ISR'
+#define portSET_INTERRUPT_MASK_FROM_ISR()               ulPortRaiseBASEPRI()
+                                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c(513): warning: implicit declaration of function 'vPortSetBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+        portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(110): note: expanded from macro 'portCLEAR_INTERRUPT_MASK_FROM_ISR'
+#define portCLEAR_INTERRUPT_MASK_FROM_ISR(x)    vPortSetBASEPRI(x)
+                                                ^
+5 warnings and 8 errors generated.
+compiling event_groups.c...
+../Middlewares/Third_Party/FreeRTOS/Source/timers.c(36): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected identifier or '('
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected identifier or '('
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected identifier or '('
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+../Middlewares/Third_Party/FreeRTOS/Source/timers.c(275): warning: implicit declaration of function 'vPortRaiseBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+        configASSERT( xReturn );
+        ^
+../Core/Inc\FreeRTOSConfig.h(154): note: expanded from macro 'configASSERT'
+#define configASSERT( x ) if ((x) == 0) {taskDISABLE_INTERRUPTS(); for( ;; );}
+                                         ^
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h(212): note: expanded from macro 'taskDISABLE_INTERRUPTS'
+#define taskDISABLE_INTERRUPTS()        portDISABLE_INTERRUPTS()
+                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(105): note: expanded from macro 'portDISABLE_INTERRUPTS'
+#define portDISABLE_INTERRUPTS()                                vPortRaiseBASEPRI()
+                                                                ^
+../Middlewares/Third_Party/FreeRTOS/Source/timers.c(628): warning: implicit declaration of function '__dsb' is invalid in C99 [-Wimplicit-function-declaration]
+                                        portYIELD_WITHIN_API();
+                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(746): note: expanded from macro 'portYIELD_WITHIN_API'
+        #define portYIELD_WITHIN_API portYIELD
+                                     ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(90): note: expanded from macro 'portYIELD'
+        __dsb( portSY_FULL_READ_WRITE );                                                                                        \
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/timers.c(628): warning: implicit declaration of function '__isb' is invalid in C99 [-Wimplicit-function-declaration]
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(746): note: expanded from macro 'portYIELD_WITHIN_API'
+        #define portYIELD_WITHIN_API portYIELD
+                                     ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(91): note: expanded from macro 'portYIELD'
+        __isb( portSY_FULL_READ_WRITE );                                                                                        \
+        ^
+3 warnings and 8 errors generated.
+compiling timers.c...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c(43): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected identifier or '('
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected identifier or '('
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected identifier or '('
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c(151): warning: implicit declaration of function 'vPortRaiseBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+                                        configASSERT( ( xWantedSize & portBYTE_ALIGNMENT_MASK ) == 0 );
+                                        ^
+../Core/Inc\FreeRTOSConfig.h(154): note: expanded from macro 'configASSERT'
+#define configASSERT( x ) if ((x) == 0) {taskDISABLE_INTERRUPTS(); for( ;; );}
+                                         ^
+../Middlewares/Third_Party/FreeRTOS/Source/include\task.h(212): note: expanded from macro 'taskDISABLE_INTERRUPTS'
+#define taskDISABLE_INTERRUPTS()        portDISABLE_INTERRUPTS()
+                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(105): note: expanded from macro 'portDISABLE_INTERRUPTS'
+#define portDISABLE_INTERRUPTS()                                vPortRaiseBASEPRI()
+                                                                ^
+1 warning and 8 errors generated.
+compiling heap_4.c...
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c(28): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected identifier or '('
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected identifier or '('
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected identifier or '('
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c(606): warning: implicit declaration of function '__dsb' is invalid in C99 [-Wimplicit-function-declaration]
+    taskYIELD();
+    ^
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h(173): note: expanded from macro 'taskYIELD'
+#define taskYIELD()                                     portYIELD()
+                                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(90): note: expanded from macro 'portYIELD'
+        __dsb( portSY_FULL_READ_WRITE );                                                                                        \
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c(606): warning: implicit declaration of function '__isb' is invalid in C99 [-Wimplicit-function-declaration]
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h(173): note: expanded from macro 'taskYIELD'
+#define taskYIELD()                                     portYIELD()
+                                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(91): note: expanded from macro 'portYIELD'
+        __isb( portSY_FULL_READ_WRITE );                                                                                        \
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c(1886): warning: implicit declaration of function 'ulPortRaiseBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+    isrm = taskENTER_CRITICAL_FROM_ISR();
+           ^
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h(188): note: expanded from macro 'taskENTER_CRITICAL_FROM_ISR'
+#define taskENTER_CRITICAL_FROM_ISR() portSET_INTERRUPT_MASK_FROM_ISR()
+                                      ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(109): note: expanded from macro 'portSET_INTERRUPT_MASK_FROM_ISR'
+#define portSET_INTERRUPT_MASK_FROM_ISR()               ulPortRaiseBASEPRI()
+                                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c(1891): warning: implicit declaration of function 'vPortSetBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+    taskEXIT_CRITICAL_FROM_ISR(isrm);
+    ^
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h(203): note: expanded from macro 'taskEXIT_CRITICAL_FROM_ISR'
+#define taskEXIT_CRITICAL_FROM_ISR( x ) portCLEAR_INTERRUPT_MASK_FROM_ISR( x )
+                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(110): note: expanded from macro 'portCLEAR_INTERRUPT_MASK_FROM_ISR'
+#define portCLEAR_INTERRUPT_MASK_FROM_ISR(x)    vPortSetBASEPRI(x)
+                                                ^
+4 warnings and 8 errors generated.
+compiling cmsis_os2.c...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(33): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected identifier or '('
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected identifier or '('
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected identifier or '('
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(37): error: This port can only be used when the project options are configured to enable hardware floating point support.
+        #error This port can only be used when the project options are configured to enable hardware floating point support.
+         ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(229): warning: implicit declaration of function 'vPortRaiseBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+        configASSERT( uxCriticalNesting == ~0UL );
+        ^
+../Core/Inc\FreeRTOSConfig.h(154): note: expanded from macro 'configASSERT'
+#define configASSERT( x ) if ((x) == 0) {taskDISABLE_INTERRUPTS(); for( ;; );}
+                                         ^
+../Middlewares/Third_Party/FreeRTOS/Source/include\task.h(212): note: expanded from macro 'taskDISABLE_INTERRUPTS'
+#define taskDISABLE_INTERRUPTS()        portDISABLE_INTERRUPTS()
+                                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(105): note: expanded from macro 'portDISABLE_INTERRUPTS'
+#define portDISABLE_INTERRUPTS()                                vPortRaiseBASEPRI()
+                                                                ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(235): error: expected '(' after 'asm'
+__asm void vPortSVCHandler( void )
+      ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(235): error: expected ';' after top-level asm block
+__asm void vPortSVCHandler( void )
+     ^
+     ;
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(237): error: use of undeclared identifier 'PRESERVE8'
+        PRESERVE8
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(253): error: expected '(' after 'asm'
+__asm void prvStartFirstTask( void )
+      ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(253): error: expected ';' after top-level asm block
+__asm void prvStartFirstTask( void )
+     ^
+     ;
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(255): error: use of undeclared identifier 'PRESERVE8'
+        PRESERVE8
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(281): error: expected '(' after 'asm'
+__asm void prvEnableVFP( void )
+      ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(281): error: expected ';' after top-level asm block
+__asm void prvEnableVFP( void )
+     ^
+     ;
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(283): error: use of undeclared identifier 'PRESERVE8'
+        PRESERVE8
+        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(434): warning: implicit declaration of function 'vPortSetBASEPRI' is invalid in C99 [-Wimplicit-function-declaration]
+                portENABLE_INTERRUPTS();
+                ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(106): note: expanded from macro 'portENABLE_INTERRUPTS'
+#define portENABLE_INTERRUPTS()                                 vPortSetBASEPRI( 0 )
+                                                                ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c(439): error: expected '(' after 'asm'
+__asm void xPortPendSVHandler( void )
+      ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+2 warnings and 20 errors generated.
+compiling port.c...
+../Core/USER/Base/Start.cpp(1): warning: In file included from...
+../Core/USER/Base/Start.h(11): warning: In file included from...
+../Core/USER/Base/TaskManager.h(10): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected unqualified-id
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected unqualified-id
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected unqualified-id
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+8 errors generated.
 compiling Start.cpp...
-linking...
-Program Size: Code=25034 RO-data=522 RW-data=16 ZI-data=21864  
-FromELF: creating hex file...
-"CAR\CAR.axf" - 0 Error(s), 0 Warning(s).
+../Core/USER/Base/TaskManager.cpp(1): warning: In file included from...
+../Core/USER/Base/TaskManager.h(10): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected unqualified-id
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected unqualified-id
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected unqualified-id
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+8 errors generated.
+compiling TaskManager.cpp...
+../Core/USER/Base/CanDevice.cpp(1): warning: In file included from...
+../Core/USER/Base/CanDevice.h(13): warning: In file included from...
+../Core/USER/Base/TaskManager.h(10): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h(62): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h(52): warning: In file included from...
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(167): error: expected unqualified-id
+static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(178): error: expected unqualified-id
+static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: unknown type name '__forceinline'
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(193): error: expected unqualified-id
+static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+                        ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: unknown type name '__forceinline'
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+       ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(162): note: expanded from macro 'portFORCE_INLINE'
+        #define portFORCE_INLINE __forceinline
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h(205): error: expected ';' after top level declarator
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+                                ^
+                                ;
+8 errors generated.
+compiling CanDevice.cpp...
+"CAR\CAR.axf" - 131 Error(s), 30 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: ARM
-                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
-                ARM::CMSIS@5.9.0
-                CMSIS (Common Microcontroller Software Interface Standard)
-   * Component: CORE Version: 5.6.0
+                http://www.keil.com/pack/ARM.CMSIS.5.0.1.pack
+                ARM.CMSIS.5.0.1
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.0.1
 
 Package Vendor: Keil
                 https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
-                Keil::STM32F4xx_DFP@2.17.1
+                Keil.STM32F4xx_DFP.2.17.1
                 STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
-  ./RTE/_CAR
-  D:/keil_new/Pack/ARM/CMSIS/5.9.0/CMSIS/Core/Include
-  D:/keil_new/Pack/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+  .\RTE\_CAR
+  D:\keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include
+  D:\keil5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
 
-   * Component: ARM::CMSIS:CORE@5.6.0
-      Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:06
+   * Component: ARM::CMSIS:CORE:5.0.1
+Target not created.
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>
