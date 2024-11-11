@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp.sp
+--cpu=Cortex-M4.fp
 "car\startup_stm32f407xx.o"
 "car\main.o"
 "car\gpio.o"
@@ -40,6 +40,7 @@
 "car\serialdevice.o"
 "car\start.o"
 "car\taskmanager.o"
+"car\candevice.o"
 --strict --scatter "CAR\CAR.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
