@@ -95,16 +95,16 @@ extern "C" void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan){
         if(HAL_CAN_GetRxMessage(&hcan1, CAN_RX_FIFO0, &RxHeader1, CanDevice::RxData1) != HAL_OK){
             Error_Handler();
         }
-        for(uint8_t i = 0; i < Can1_Instances_Index; i++){
-            Can1_Instances[i]->Can_update(RxData1);        //调用所有实例中的Can_update函数，如何识别是否是该实例所需的报文，由子类实现
+        for(uint8_t i = 0; i < CanDevice::Can1_Instances_Index; i++){
+            CanDevice::Can1_Instances[i]->Can_update(RxData1);        //调用所有实例中的Can_update函数，如何识别是否是该实例所需的报文，由子类实现
         }
     }else if(hcan == &hcan2){
         CAN_RxHeaderTypeDef RxHeader2;
         if(HAL_CAN_GetRxMessage(&hcan2, CAN_RX_FIFO0, &RxHeader2, CanDevice::RxData2) != HAL_OK){
             Error_Handler();
         }
-        for(uint8_t i = 0; i < Can2_Instances_Index; i++){
-            Can2_Instances[i]->Can_update(RxData2);
+        for(uint8_t i = 0; i < CanDevice::Can2_Instances_Index; i++){
+            CanDevice::Can2_Instances[i]->Can_update(RxData2);
         }
     }
 }
