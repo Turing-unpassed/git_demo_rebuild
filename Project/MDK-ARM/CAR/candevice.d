@@ -35,16 +35,4 @@ car/candevice.o: ../Core/USER/Base/CanDevice.cpp \
   ../Drivers/STM32F4xx_HAL_Driver/Inc\stm32f4xx_hal_tim.h \
   ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
   ../Drivers/STM32F4xx_HAL_Driver/Inc\stm32f4xx_hal_uart.h \
-  ../Core/Inc\can.h ../Core/Inc/main.h ../Core/USER/Base/TaskManager.h \
-  ../Middlewares/Third_Party/FreeRTOS/Source/include\FreeRTOS.h \
-  ../Core/Inc\FreeRTOSConfig.h \
-  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
-  ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
-  ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
-  ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F\portmacro.h \
-  ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
-  ../Middlewares/Third_Party/FreeRTOS/Source/include\task.h \
-  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
-  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2\cmsis_os.h \
-  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
-  ../Core/USER/Base/Error_Handle.h
+  ../Core/Inc\can.h ../Core/Inc/main.h

@@ -17,7 +17,7 @@ extern "C"
 #endif
 
 #ifdef __cplusplus
-#define MAX_INSTANCES 10 //暂时设置一条can设备最多可以创建10个实例,后面有需要可以再修改
+#define CAN_MAX_INSTANCES 10 //暂时设置一条can设备最多可以创建10个实例,后面有需要可以再修改
 
 class CanDevice
 {
@@ -32,11 +32,11 @@ public:
     uint8_t send_buf2[8] = {0};  // CAN2下发报文的数据
     uint32_t msg_box1 = 0;  //保存can1下发报文使用的邮箱
     uint32_t msg_box2 = 0;  //保存can2下发报文使用的邮箱
-    uint8_t Can1_Instances_Index = 0;  // can1实例的数量
-    uint8_t Can2_Instances_Index = 0;  // can2实例的数量
-
-    static CanDevice *Can1_Instances[MAX_INSTANCES];  // 保存can1上的所有实例
-    static CanDevice *Can2_Instances[MAX_INSTANCES];  // 保存can2上的所有实例
+    
+    static CanDevice *Can1_Instances[CAN_MAX_INSTANCES];  // 保存can1上的所有实例
+	static uint8_t Can1_Instances_Index;  // can1实例的数量
+    static CanDevice *Can2_Instances[CAN_MAX_INSTANCES];  // 保存can2上的所有实例
+	static uint8_t Can2_Instances_Index;  // can2实例的数量
     static uint8_t RxData1[8];  //存储CAN1接收到的数据
     static uint8_t RxData2[8];  //存储CAN2接收到的数据
     

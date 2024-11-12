@@ -1,5 +1,5 @@
-#ifndef __ERROR_HANDLE_H
-#define __ERROR_HANDLE_H
+#ifndef __START_H
+#define __START_H
 
 #ifdef __cplusplus
 extern "C"

@@ -24,6 +24,7 @@ class Motor : public CanDevice
 public:
 	Motor(CAN_HandleTypeDef *hcan_, uint8_t can_id_);
 	int16_t motor_process();
+	void Can_SendData();
 };
 
 #endif

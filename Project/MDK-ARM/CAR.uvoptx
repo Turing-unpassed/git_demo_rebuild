@@ -161,7 +161,7 @@
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Can1_Instances1[MAX_INSTANCES+1]</ItemText>
+          <ItemText>Can1_Instances1[can_id_]</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
@@ -171,7 +171,7 @@
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Can1_Instances1[can_id_]</ItemText>
+          <ItemText>task_core</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
@@ -181,27 +181,72 @@
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>task_core</ItemText>
+          <ItemText>TxHeader1.StdId</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>TxHeader1.StdId</ItemText>
+          <ItemText>TxHeader2</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>TxHeader2</ItemText>
+          <ItemText>send_buf1[2 * i - 2]</ItemText>
         </Ww>
         <Ww>
           <count>8</count>
           <WinNumber>1</WinNumber>
-          <ItemText>send_buf1[2 * i - 2]</ItemText>
+          <ItemText>Can1_Instances1[can_id_]</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
           <WinNumber>1</WinNumber>
+          <ItemText>TxHeader1.StdId</ItemText>
+        </Ww>
+        <Ww>
+          <count>10</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>send_buf1[0]</ItemText>
+        </Ww>
+        <Ww>
+          <count>11</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ctemp</ItemText>
+        </Ww>
+        <Ww>
+          <count>12</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>send_buf1[1]</ItemText>
+        </Ww>
+        <Ww>
+          <count>13</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>send_buf1[1]</ItemText>
+        </Ww>
+        <Ww>
+          <count>14</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Can1_Instances[Can1_Instances_Index]</ItemText>
+        </Ww>
+        <Ww>
+          <count>15</count>
+          <WinNumber>1</WinNumber>
           <ItemText>Can1_Instances1[can_id_]</ItemText>
+        </Ww>
+        <Ww>
+          <count>16</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>TxHeader1</ItemText>
+        </Ww>
+        <Ww>
+          <count>17</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>TxHeader1.StdId</ItemText>
+        </Ww>
+        <Ww>
+          <count>18</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>send_buf1[8]</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -214,6 +259,11 @@
           <count>1</count>
           <WinNumber>2</WinNumber>
           <ItemText>can_core</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>TxHeader1.DLC</ItemText>
         </Ww>
       </WatchWindow2>
       <MemoryWindow1>
