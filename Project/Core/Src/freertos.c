@@ -119,7 +119,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-		Start_tasks();
+	Start_tasks();
     osDelay(500);
   }
   /* USER CODE END StartDefaultTask */

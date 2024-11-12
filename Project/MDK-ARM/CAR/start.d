@@ -52,4 +52,5 @@ car/start.o: ../Core/USER/Base/Start.cpp ../Core/USER/Base/Start.h \
   ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
   ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2\cmsis_os.h \
   ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
-  ../Core/USER/Base/Error_Handle.h
+  ../Core/USER/Base/Error_Handle.h ../Core/USER/Base/CanDevice.h \
+  ../Core/Inc\can.h ../Core/USER/Hardware\Motor.h

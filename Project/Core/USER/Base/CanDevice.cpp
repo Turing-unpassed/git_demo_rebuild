@@ -163,7 +163,7 @@ void CanManager::process_data(){
 }
 
 extern "C" void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan){
-    if(hcan == &hcan1){
+  /*  if(hcan == &hcan1){
 
         CAN_RxHeaderTypeDef RxHeader1;
         HAL_CAN_GetRxMessage(&hcan1, CAN_RX_FIFO0, &RxHeader1, CanManager::RxData1);  //获取电调上传的电机信息,放在RxData1数组中
@@ -197,5 +197,5 @@ extern "C" void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan){
                 CanDevice::Can2_Instances2[i]->Can_update(CanManager::RxData2);
             }
         }
-    }    
+    }   */ 
 }

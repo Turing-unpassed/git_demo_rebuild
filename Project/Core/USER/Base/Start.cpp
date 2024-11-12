@@ -5,15 +5,10 @@
 
 extern "C" void before_Start_tasks(void)
 {
-//	Package U3_PK;
-//	U3_PK.Head_0   = 0x0d;
-//	U3_PK.Head_1   = 0x0a;
-//	U3_PK.End_0    = 0x0a;
-//	U3_PK.End_1 	 = 0x0d; 
-//	U3_PK.length   = 3; 
-//	U3_PK.frame_id = 1;
-//	U3.SetRxPackage_identity(U3_PK);
-//  U3.startUartReceiveIT();
+	TaskManager task_core(1,10,"cantest",10,1024);
+	CanManager can_core;
+	Motor M3508(&hcan1,1);
+	task_core.registerTask(1,&can_core);
 }
 
 extern "C" void Start_tasks(void)

@@ -9,6 +9,8 @@ extern "C"
 /*在此处引用外部文件：       begin*/	
 #include "SerialDevice.h"
 #include "TaskManager.h"
+#include "CanDevice.h"
+#include "Motor.h"
 /*引用外部文件end*/	
 
 

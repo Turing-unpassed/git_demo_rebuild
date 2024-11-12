@@ -49,7 +49,7 @@ public:
     uint8_t Can2_instance_index2 = 0;
 
     virtual int16_t motor_process() = 0; // 给m3508用的接口，其他电机不要管
-    virtual void Can_update(uint8_t can_RxData[8]) = 0;  //用于更新电机上传的数据
+    //virtual void Can_update(uint8_t can_RxData[8]) = 0;  //用于更新电机上传的数据
     void CAN1_Filter_Init(void); // 初始化CAN1过滤器
     void CAN2_Filter_Init(void);
 
