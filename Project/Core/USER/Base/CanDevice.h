@@ -10,7 +10,6 @@ extern "C"
 #include "stm32f4xx_hal.h"
 #include "can.h"
 #include <stdint.h>
-#include "TaskManager.h"
 /*引用外部文件end*/	
 
 #ifdef __cplusplus
@@ -18,60 +17,33 @@ extern "C"
 #endif
 
 #ifdef __cplusplus
-#define MAX_INSTANCES 4 // 一条can上最多挂四个3508
-
-enum Can_id  // 定义M3508和GM6020的can设备id
-{
-    m3508_id_1 = 0x201,
-    m3508_id_2 = 0x202,
-    m3508_id_3 = 0x203,
-    m3508_id_4 = 0x204,
-
-    gm6020_id_1 = 0x205,
-    gm6020_id_2 = 0x206,
-    gm6020_id_3 = 0x207,
-    gm6020_id_4 = 0x208
-
-};
+#define MAX_INSTANCES 10 //暂时设置一条can设备最多可以创建10个实例,后面有需要可以再修改
 
 class CanDevice
 {
-public:
-    CAN_HandleTypeDef *hcan = nullptr;  // CAN 句柄
-    uint8_t can_id = 0;  //保存每个实例的can_id
-    static CanDevice *Can1_Instances1[MAX_INSTANCES+1]; // 保存can1上id为1-4的实例
-    static CanDevice *Can1_Instances2[MAX_INSTANCES+1]; // 保存can1上id为5-8的实例
-    static CanDevice *Can2_Instances1[MAX_INSTANCES+1]; // 保存can2上id为1-4的实例
-    static CanDevice *Can2_Instances2[MAX_INSTANCES+1]; // 保存can2上id为5-8的实例
-    uint8_t Can1_instance_index1 = 0; // 实例索引
-    uint8_t Can1_instance_index2 = 0;
-    uint8_t Can2_instance_index1 = 0;
-    uint8_t Can2_instance_index2 = 0;
-
-    virtual int16_t motor_process() = 0; // 给m3508用的接口，其他电机不要管
-    //virtual void Can_update(uint8_t can_RxData[8]) = 0;  //用于更新电机上传的数据
-    void CAN1_Filter_Init(void); // 初始化CAN1过滤器
-    void CAN2_Filter_Init(void);
-
+public: 
     CanDevice(CAN_HandleTypeDef *hcan_, uint8_t can_id_);
-};
 
-class CanManager : public ITaskProcessor
-{
-private:
-    
-    CAN_TxHeaderTypeDef TxHeader1,TxHeader2;  // 定义CAN下发报文的数据头
-    uint8_t send_buf1[8] = {0};  // 定义CAN下发报文用于控制电机的数据
-    uint8_t send_buf2[8] = {0};
-    uint32_t msg_box1 = 0;  //保存下发报文使用的邮箱
-    uint32_t msg_box2 = 0;
+    CAN_HandleTypeDef *hcan = nullptr;  // 保存CAN 句柄
+    CAN_TxHeaderTypeDef TxHeader1,TxHeader2;  // CAN下发报文的数据头,在子类中根据需要配置
 
-public:
-    void process_data();  //在freertos中调用的函数，用于发送CAN下发报文
-    CanManager();
+    uint8_t can_id = 0;  //保存每个实例的can_id
+    uint8_t send_buf1[8] = {0};  // CAN1下发报文的数据
+    uint8_t send_buf2[8] = {0};  // CAN2下发报文的数据
+    uint32_t msg_box1 = 0;  //保存can1下发报文使用的邮箱
+    uint32_t msg_box2 = 0;  //保存can2下发报文使用的邮箱
+    uint8_t Can1_Instances_Index = 0;  // can1实例的数量
+    uint8_t Can2_Instances_Index = 0;  // can2实例的数量
 
+    static CanDevice *Can1_Instances[MAX_INSTANCES];  // 保存can1上的所有实例
+    static CanDevice *Can2_Instances[MAX_INSTANCES];  // 保存can2上的所有实例
     static uint8_t RxData1[8];  //存储CAN1接收到的数据
     static uint8_t RxData2[8];  //存储CAN2接收到的数据
+    
+    virtual void Can_SendData();  //CAN发送报文函数
+    virtual void Can_update(uint8_t can_RxData[8]);  //用于更新c6020电调上传的数据，其他设备有类似操作也可以重写该函数
+    virtual void CAN1_Filter_Init(void);  //can过滤器配置函数
+    virtual void CAN2_Filter_Init(void);  //默认接收所有can数据帧，使用32位过滤器掩码模式，有其他要求可子类中根据需要重写该函数
 };
 
 #endif
