@@ -16,9 +16,14 @@ void Motor::Can_SendData(){
     TxHeader1.DLC = 8;  //数据长度为8字节
     TxHeader1.TransmitGlobalTime = DISABLE;  //不使用全局时间戳
 	
-	uint16_t ctemp = motor_process();
+	int16_t ctemp = motor_process();
 	send_buf1[0] = (uint8_t)(ctemp>>8);
 	send_buf1[1] = (uint8_t)ctemp;
-	
+	send_buf1[2] = (uint8_t)(ctemp>>8);
+	send_buf1[3] = (uint8_t)ctemp;
+	send_buf1[4] = (uint8_t)(ctemp>>8);
+	send_buf1[5] = (uint8_t)ctemp;
+	send_buf1[6] = (uint8_t)(ctemp>>8);
+	send_buf1[7] = (uint8_t)ctemp;
 	HAL_CAN_AddTxMessage(hcan,&TxHeader1,send_buf1,&msg_box1);
 }

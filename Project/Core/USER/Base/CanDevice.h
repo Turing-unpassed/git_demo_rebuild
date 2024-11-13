@@ -43,7 +43,8 @@ public:
     virtual void Can_SendData();  //CAN发送报文函数
     virtual void Can_update(uint8_t can_RxData[8]);  //用于更新c6020电调上传的数据，其他设备有类似操作也可以重写该函数
     virtual void CAN1_Filter_Init(void);  //can过滤器配置函数
-    virtual void CAN2_Filter_Init(void);  //默认接收所有can数据帧，使用32位过滤器掩码模式，有其他要求可子类中根据需要重写该函数
+    virtual void CAN2_Filter_Init(void);  //默认接收所有can数据帧，使用32位过滤器掩码模式，有其他要求可在子类中根据需要重写该函数
+	virtual void Can_Init(); //子类在使用can时需要首先手动调用这个函数，也可以根据需要重写（比如增加某些中断等）
 };
 
 #endif

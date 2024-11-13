@@ -19,72 +19,66 @@ CanDevice::CanDevice(CAN_HandleTypeDef *hcan_, uint8_t can_id_):hcan(hcan_), can
             Can2_Instances_Index++;
         }
     }
+}
 
-    //CAN1_Filter_Init();     //初始化CAN的过滤器
-    //CAN2_Filter_Init();
+void CanDevice::Can_Init(){
+	CAN1_Filter_Init();
+	CAN2_Filter_Init();
 }
 
 void CanDevice::CAN1_Filter_Init(){
     CAN_FilterTypeDef  sFilterConfig;
-    sFilterConfig.FilterActivation = ENABLE;  //启用过滤器
+    sFilterConfig.FilterActivation = CAN_FILTER_ENABLE;  //启用过滤器
     sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;  //掩码模式
     sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT; //32位过滤器
-    sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0; //通过过滤器的报文放置FIFO0
+    sFilterConfig.FilterFIFOAssignment = CAN_FILTER_FIFO0; //通过过滤器的报文放置FIFO0
     sFilterConfig.FilterBank = 0;  //使用0号过滤器
-    sFilterConfig.FilterIdHigh = 0x00;
-    sFilterConfig.FilterIdLow = 0x00;   //不过滤任何ID号，即接收所有ID号的报文
+    sFilterConfig.FilterIdHigh = 0x0000;
+    sFilterConfig.FilterIdLow = 0x0000;   //不过滤任何ID号，即接收所有ID号的报文
     sFilterConfig.FilterMaskIdHigh = 0x00;
     sFilterConfig.FilterMaskIdLow = 0x00;
-    sFilterConfig.SlaveStartFilterBank = 14;  //can2的过滤器从14号开始,避免与can1的过滤器冲突
+    
     if(HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig)!= HAL_OK){
         Error_Handler();
     }
-
-	if (HAL_CAN_Start(&hcan1) != HAL_OK)  //启动CAN1
+	
+	if (HAL_CAN_Start(&hcan1) != HAL_OK)
     {
-        /* Start Error */
-        Error_Handler();
+		Error_Handler();
     }
 	
-    if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) //使能can1的FIFO0接收中断
-    {
-        /* Start Error */
-        Error_Handler();
-    }
-
-     
+	if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+	{
+		Error_Handler();
+	}
 }
 
 void CanDevice::CAN2_Filter_Init(){
 
     CAN_FilterTypeDef  sFilterConfig;
-    sFilterConfig.FilterActivation = ENABLE;  //启用过滤器
+    sFilterConfig.FilterActivation = CAN_FILTER_ENABLE;  //启用过滤器
     sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK; //掩码模式
     sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT; //32位过滤器
-    sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0; //通过过滤器的报文放置FIFO0
+    sFilterConfig.FilterFIFOAssignment = CAN_FILTER_FIFO0; //通过过滤器的报文放置FIFO0
     sFilterConfig.FilterBank = 14;  //使用14号过滤器
     sFilterConfig.FilterIdHigh = 0x00;
     sFilterConfig.FilterIdLow = 0x00; //不过滤任何ID号，即接收所有ID号的报文
     sFilterConfig.FilterMaskIdHigh = 0x00;
     sFilterConfig.FilterMaskIdLow = 0x00;
-    
+    sFilterConfig.SlaveStartFilterBank = 14;  //can2的过滤器从14号开始,避免与can1的过滤器冲突
     if(HAL_CAN_ConfigFilter(&hcan2, &sFilterConfig) != HAL_OK){
         Error_Handler();
     }
 	
-	if (HAL_CAN_Start(&hcan2) != HAL_OK)  //启动CAN2
+	if (HAL_CAN_Start(&hcan2) != HAL_OK)
     {
-        /* Start Error */
-        Error_Handler();
+		Error_Handler();
     }
 	
-    if (HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) //使能can2的FIFO0接收中断
-    {
-        /* Start Error */
-        Error_Handler();
-    }
-
-    
+	if (HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+	{
+		Error_Handler();
+	}
 }
 
 void CanDevice::Can_update(uint8_t can_RxData[8]){

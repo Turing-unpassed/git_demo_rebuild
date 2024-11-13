@@ -21,7 +21,7 @@
 #include "can.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "CanDevice.h"
 /* USER CODE END 0 */
 
 CAN_HandleTypeDef hcan1;
@@ -87,7 +87,7 @@ void MX_CAN2_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN CAN2_Init 2 */
-
+  
   /* USER CODE END CAN2_Init 2 */
 
 }

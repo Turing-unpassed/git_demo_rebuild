@@ -2,14 +2,15 @@
 
 //SerialDevice U3 (&huart6, false);
 
-
+Motor M3508(&hcan1,1);
 extern "C" void before_Start_tasks(void)
 {
-	
+   M3508.Can_Init();     //初始化CAN的过滤器
+   
+ 
 }
 
 extern "C" void Start_tasks(void)
-{
-    Motor M3508(&hcan1,1);
+{ 
 	M3508.Can_SendData();
 }
