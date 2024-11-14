@@ -8,7 +8,7 @@ uint8_t CanDevice::Can1_Instances_Index = 0;
 uint8_t CanDevice::Can2_Instances_Index = 0;
 
 CanDevice::CanDevice(CAN_HandleTypeDef *hcan_, uint8_t can_id_):hcan(hcan_), can_id(can_id_){
-    if(hcan_ == &hcan1){
+    if(hcan == &hcan1){
         if(Can1_Instances_Index < CAN_MAX_INSTANCES){       //将can1上的所有实例指针存入数组
             Can1_Instances[Can1_Instances_Index] = this;
             Can1_Instances_Index++;
@@ -81,7 +81,7 @@ void CanDevice::CAN2_Filter_Init(){
 	}
 }
 
-void CanDevice::Can_update(uint8_t can_RxData[8]){
+void CanDevice::Can_update(uint8_t can_RxData[8],CAN_RxHeaderTypeDef* RxHeader){
     //具体实现在子类中，不写成纯虚函数是为了兼容不使用该函数的CAN设备
 }
 
@@ -96,7 +96,7 @@ extern "C" void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan){
             Error_Handler();
         }
         for(uint8_t i = 0; i < CanDevice::Can1_Instances_Index; i++){
-            CanDevice::Can1_Instances[i]->Can_update(CanDevice::RxData1);    //调用所有实例中的Can_update函数，如何识别是否是该实例所需的报文，由子类实现
+            CanDevice::Can1_Instances[i]->Can_update(CanDevice::RxData1, &RxHeader1);    //调用所有实例中的Can_update函数，如何识别是否是该实例所需的报文，由子类实现
         }
     }else if(hcan == &hcan2){
         CAN_RxHeaderTypeDef RxHeader2;
@@ -104,7 +104,7 @@ extern "C" void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan){
             Error_Handler();
         }
         for(uint8_t i = 0; i < CanDevice::Can2_Instances_Index; i++){
-            CanDevice::Can2_Instances[i]->Can_update(CanDevice::RxData2);
+            CanDevice::Can2_Instances[i]->Can_update(CanDevice::RxData2, &RxHeader2);
         }
     }
 }

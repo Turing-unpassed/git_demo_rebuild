@@ -841,18 +841,18 @@ ARM Macro Assembler    Page 13
               00000400 
               00000200 
               00000000 
-Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --depend=c
-ar\startup_stm32f407xx.d -ocar\startup_stm32f407xx.o -I../Core/Inc -I.\RTE\_CAR
+Command Line: --debug --xref --diag_suppress=9931,A1950W --cpu=Cortex-M4.fp.sp 
+--depend=car\startup_stm32f407xx.d -ocar\startup_stm32f407xx.o -I../Core/Inc -I
 
 
 
 ARM Macro Assembler    Page 14 
 
 
- -ID:\keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -ID:\keil5\ARM\PACK\Keil\STM
-32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predefine="__UVIS
-ION_VERSION SETA 524" --predefine="_RTE_ SETA 1" --predefine="STM32F407xx SETA 
-1" --list=startup_stm32f407xx.lst startup_stm32f407xx.s
+.\RTE\_CAR -ID:\keil5\ARM\PACK\ARM\CMSIS\6.1.0\CMSIS\Core\Include -ID:\keil5\AR
+M\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include --pr
+edefine="__UVISION_VERSION SETA 541" --predefine="STM32F407xx SETA 1" --predefi
+ne="_RTE_ SETA 1" --list=startup_stm32f407xx.lst startup_stm32f407xx.s
 
 
 
