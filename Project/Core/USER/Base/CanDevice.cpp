@@ -2,8 +2,6 @@
 //静态变量的初始化
 CanDevice* CanDevice::Can1_Instances[CAN_MAX_INSTANCES] = {nullptr};
 CanDevice* CanDevice::Can2_Instances[CAN_MAX_INSTANCES] = {nullptr};
-uint8_t CanDevice::RxData1[8] = {0};
-uint8_t CanDevice::RxData2[8] = {0};
 uint8_t CanDevice::Can1_Instances_Index = 0;
 uint8_t CanDevice::Can2_Instances_Index = 0;
 
@@ -43,56 +41,50 @@ void CanDevice::Can_Init(){
 }
 
 void CanDevice::CAN1_Filter_Init(){
-    CAN_FilterTypeDef  sFilterConfig;
-    sFilterConfig.FilterActivation = CAN_FILTER_ENABLE;  //启用过滤器
-    sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;  //掩码模式
-    sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT; //32位过滤器
-    sFilterConfig.FilterFIFOAssignment = CAN_FILTER_FIFO0; //通过过滤器的报文放置FIFO0
-    sFilterConfig.FilterBank = 0;  //使用0号过滤器
-    sFilterConfig.FilterIdHigh = 0x0000;
-    sFilterConfig.FilterIdLow = 0x0000;   //不过滤任何ID号，即接收所有ID号的报文
-    sFilterConfig.FilterMaskIdHigh = 0x00;
-    sFilterConfig.FilterMaskIdLow = 0x00;
-    
-    if(HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig)!= HAL_OK){
-        Error_Handler();
-    }
-	
-	if (HAL_CAN_Start(&hcan1) != HAL_OK)
-    {
+   CAN_FilterTypeDef sFilterconfig;
+	sFilterconfig.FilterScale = CAN_FILTERSCALE_32BIT;  //32位过滤器
+	sFilterconfig.FilterMode = CAN_FILTERMODE_IDMASK;  //掩码模式
+	sFilterconfig.FilterIdHigh = 0;
+	sFilterconfig.FilterIdLow = 0;
+	sFilterconfig.FilterMaskIdHigh = 0;    //不过滤任何ID号，即接收所有ID号的报文
+	sFilterconfig.FilterMaskIdLow = 0;
+	sFilterconfig.FilterBank = 0;
+	sFilterconfig.FilterActivation = CAN_FILTER_ENABLE;   //启用过滤器
+	sFilterconfig.FilterFIFOAssignment = CAN_FILTER_FIFO0;  //通过过滤器的报文放置FIFO0
+	if(HAL_OK != HAL_CAN_ConfigFilter(&hcan1,&sFilterconfig)){
 		Error_Handler();
-    }
+	}
+
+	if(HAL_OK != HAL_CAN_Start(&hcan1)){   //启动can
+		Error_Handler();
+	}
 	
-	if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
-	{
+	if(HAL_OK != HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING)){  //使能fifo0接收中断
 		Error_Handler();
 	}
 }
 
 void CanDevice::CAN2_Filter_Init(){
 
-    CAN_FilterTypeDef  sFilterConfig;
-    sFilterConfig.FilterActivation = CAN_FILTER_ENABLE;  //启用过滤器
-    sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK; //掩码模式
-    sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT; //32位过滤器
-    sFilterConfig.FilterFIFOAssignment = CAN_FILTER_FIFO0; //通过过滤器的报文放置FIFO0
-    sFilterConfig.FilterBank = 14;  //使用14号过滤器
-    sFilterConfig.FilterIdHigh = 0x00;
-    sFilterConfig.FilterIdLow = 0x00; //不过滤任何ID号，即接收所有ID号的报文
-    sFilterConfig.FilterMaskIdHigh = 0x00;
-    sFilterConfig.FilterMaskIdLow = 0x00;
-    sFilterConfig.SlaveStartFilterBank = 14;  //can2的过滤器从14号开始,避免与can1的过滤器冲突
-    if(HAL_CAN_ConfigFilter(&hcan2, &sFilterConfig) != HAL_OK){
-        Error_Handler();
-    }
-	
-	if (HAL_CAN_Start(&hcan2) != HAL_OK)
-    {
+    CAN_FilterTypeDef sFilterconfig;
+	sFilterconfig.FilterScale = CAN_FILTERSCALE_32BIT;  //32位过滤器
+	sFilterconfig.FilterMode = CAN_FILTERMODE_IDMASK;  //掩码模式
+	sFilterconfig.FilterIdHigh = 0;
+	sFilterconfig.FilterIdLow = 0;
+	sFilterconfig.FilterMaskIdHigh = 0;    //不过滤任何ID号，即接收所有ID号的报文
+	sFilterconfig.FilterMaskIdLow = 0;
+	sFilterconfig.FilterBank = 0;
+	sFilterconfig.FilterActivation = CAN_FILTER_ENABLE;   //启用过滤器
+	sFilterconfig.FilterFIFOAssignment = CAN_FILTER_FIFO0;  //通过过滤器的报文放置FIFO0
+    sFilterconfig.SlaveStartFilterBank = 14;  //can2的过滤器从14号开始,避免与can1的过滤器冲突
+	if(HAL_OK != HAL_CAN_ConfigFilter(&hcan2, &sFilterconfig)){
 		Error_Handler();
-    }
+	}
+	if(HAL_OK != HAL_CAN_Start(&hcan2)){   //启动can
+		Error_Handler();
+	}
 	
-	if (HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
-	{
+	if(HAL_OK != HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING)){  //使能fifo0接收中断
 		Error_Handler();
 	}
 }
@@ -112,7 +104,9 @@ extern "C" void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan){
             Error_Handler();
         }
         for(uint8_t i = 0; i < CanDevice::Can1_Instances_Index; i++){
-            CanDevice::Can1_Instances[i]->Can_update(CanDevice::RxData1, &RxHeader1);    //调用所有实例中的Can_update函数，如何识别是否是该实例所需的报文，由子类实现，比如判断stdid等
+            if(CanDevice::Can1_Instances[i] != nullptr){
+                CanDevice::Can1_Instances[i]->Can_update(CanDevice::RxData1, &RxHeader1);    //调用所有实例中的Can_update函数，如何识别是否是该实例所需的报文，由子类实现，比如判断stdid等
+            }
         }
     }else if(hcan == &hcan2){
         CAN_RxHeaderTypeDef RxHeader2;
@@ -120,7 +114,9 @@ extern "C" void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan){
             Error_Handler();
         }
         for(uint8_t i = 0; i < CanDevice::Can2_Instances_Index; i++){
-            CanDevice::Can2_Instances[i]->Can_update(CanDevice::RxData2, &RxHeader2);
+            if(CanDevice::Can2_Instances[i] != nullptr){
+                CanDevice::Can2_Instances[i]->Can_update(CanDevice::RxData2, &RxHeader2);
+            }
         }
     }
 }
