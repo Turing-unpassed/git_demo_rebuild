@@ -75,7 +75,7 @@ void CanDevice::CAN2_Filter_Init(){
 	sFilterconfig.FilterIdLow = 0;
 	sFilterconfig.FilterMaskIdHigh = 0;    //不过滤任何ID号，即接收所有ID号的报文
 	sFilterconfig.FilterMaskIdLow = 0;
-	sFilterconfig.FilterBank = 0;
+	sFilterconfig.FilterBank = 14;
 	sFilterconfig.FilterActivation = CAN_FILTER_ENABLE;   //启用过滤器
 	sFilterconfig.FilterFIFOAssignment = CAN_FILTER_FIFO0;  //通过过滤器的报文放置FIFO0
     sFilterconfig.SlaveStartFilterBank = 14;  //can2的过滤器从14号开始,避免与can1的过滤器冲突
