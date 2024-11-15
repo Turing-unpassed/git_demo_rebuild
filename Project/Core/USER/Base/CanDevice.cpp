@@ -10,13 +10,29 @@ uint8_t CanDevice::Can2_Instances_Index = 0;
 CanDevice::CanDevice(CAN_HandleTypeDef *hcan_, uint8_t can_id_):hcan(hcan_), can_id(can_id_){
     if(hcan == &hcan1){
         if(Can1_Instances_Index < CAN_MAX_INSTANCES){       //将can1上的所有实例指针存入数组
-            Can1_Instances[Can1_Instances_Index] = this;
-            Can1_Instances_Index++;
+            uint8_t i;
+            for(i=0;i <= CanDevice::Can1_Instances_Index;i++){      //遍历数组查找是否有can_id相同的实例，有则跳出循环
+			    if(Can1_Instances[i]->can_id == can_id_ || Can1_Instances[i] == nullptr){
+					break;
+				}
+			}
+			if(i-1 == CanDevice::Can1_Instances_Index){    //如果i-1等于CanDevice::Can1_Instances_Index，则说明没有找到相同的实例，则存入数组
+				Can1_Instances[Can1_Instances_Index] = this;
+				Can1_Instances_Index++;
+			}
         }
     }else if(hcan_ == &hcan2){
         if(Can2_Instances_Index < CAN_MAX_INSTANCES){       //将can2上的所有实例指针存入数组
-            Can2_Instances[Can2_Instances_Index] = this;
-            Can2_Instances_Index++;
+            uint8_t i;
+            for(i=0;i <= CanDevice::Can2_Instances_Index;i++){      //遍历数组查找是否有can_id相同的实例，有则跳出循环
+			    if(Can2_Instances[i]->can_id == can_id_ || Can2_Instances[i] == nullptr){
+					break;
+				}
+			}
+			if(i-1 == CanDevice::Can2_Instances_Index){    //如果i-1等于CanDevice::Can2_Instances_Index，则说明没有找到相同的实例，则存入数组
+				Can2_Instances[Can2_Instances_Index] = this;
+				Can2_Instances_Index++;
+			}
         }
     }
 }
