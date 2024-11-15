@@ -4,6 +4,8 @@ CanDevice* CanDevice::Can1_Instances[CAN_MAX_INSTANCES] = {nullptr};
 CanDevice* CanDevice::Can2_Instances[CAN_MAX_INSTANCES] = {nullptr};
 uint8_t CanDevice::Can1_Instances_Index = 0;
 uint8_t CanDevice::Can2_Instances_Index = 0;
+uint8_t CanDevice::RxData1[8] = {0};
+uint8_t CanDevice::RxData2[8] = {0};
 
 CanDevice::CanDevice(CAN_HandleTypeDef *hcan_, uint8_t can_id_):hcan(hcan_), can_id(can_id_){
     if(hcan == &hcan1){

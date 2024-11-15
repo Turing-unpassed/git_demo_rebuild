@@ -37,8 +37,8 @@ public:
 	static uint8_t Can1_Instances_Index;  // can1实例的数量
     static CanDevice *Can2_Instances[CAN_MAX_INSTANCES];  // 保存can2上的所有实例
 	static uint8_t Can2_Instances_Index;  // can2实例的数量
-    uint8_t RxData1[8] = {0};  //存储CAN1接收到的数据
-    uint8_t RxData2[8] = {0};  //存储CAN2接收到的数据
+    static uint8_t RxData1[8];  //存储CAN1接收到的数据
+    static uint8_t RxData2[8];  //存储CAN2接收到的数据
     
     virtual void Can_SendData();  //CAN发送报文函数
     virtual void Can_update(uint8_t can_RxData[8],CAN_RxHeaderTypeDef* RxHeader);  //用于更新c6020电调上传的数据，其他设备有类似操作也可以重写该函数
