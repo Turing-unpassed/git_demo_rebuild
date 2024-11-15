@@ -16,7 +16,7 @@ CanDevice::CanDevice(CAN_HandleTypeDef *hcan_, uint8_t can_id_):hcan(hcan_), can
 					break;
 				}
 			}
-			if(i-1 == CanDevice::Can1_Instances_Index){    //如果i-1等于CanDevice::Can1_Instances_Index，则说明没有找到相同的实例，则存入数组
+			if(i == CanDevice::Can1_Instances_Index){    //遍历完如果i等于CanDevice::Can1_Instances_Index，则说明没有找到相同的实例，则存入数组
 				Can1_Instances[Can1_Instances_Index] = this;
 				Can1_Instances_Index++;
 			}
@@ -29,7 +29,7 @@ CanDevice::CanDevice(CAN_HandleTypeDef *hcan_, uint8_t can_id_):hcan(hcan_), can
 					break;
 				}
 			}
-			if(i-1 == CanDevice::Can2_Instances_Index){    //如果i-1等于CanDevice::Can2_Instances_Index，则说明没有找到相同的实例，则存入数组
+			if(i == CanDevice::Can2_Instances_Index){    //遍历完如果i等于CanDevice::Can2_Instances_Index，则说明没有找到相同的实例，则存入数组
 				Can2_Instances[Can2_Instances_Index] = this;
 				Can2_Instances_Index++;
 			}
