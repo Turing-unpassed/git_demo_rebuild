@@ -1,7 +1,7 @@
 #include "Action.h"
 
 Action::Action(UART_HandleTypeDef *huart,bool enableCrcCheck, int8_t install_position_x_ , int8_t install_position_y_)
-        :SerialDevice(huart,enableCrcCheck),enableCrcCheck_(enableCrcCheck),state(WAITING_FOR_HEADER_0),
+        :SerialDevice(huart,enableCrcCheck),state(WAITING_FOR_HEADER_0),
         install_position_x(install_position_x_),install_position_y(install_position_y_)
 {
     
@@ -13,7 +13,7 @@ void Action::Action_Info_Update(){
     action_info.Angle_Roll = rx_data.data[2];
     action_info.Position_X = rx_data.data[3];
     action_info.Position_Y = rx_data.data[4];
-    action_info.W = rx_data[5];
+    action_info.W = rx_data.data[5];
 }
 
 void Action::handleReceiveData(uint8_t byte){

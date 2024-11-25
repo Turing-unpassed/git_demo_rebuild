@@ -42,7 +42,7 @@ typedef union{
     uint8_t byte[ACTION_DATA_LENGTH];
 }Action_RxData;
 
-class Action public:SerialDevice
+class Action :public SerialDevice
 {
 public:
     Action(UART_HandleTypeDef *huart, bool enableCrcCheck =true, int8_t install_position_x_ = 0, int8_t install_position_y_ = 0);
