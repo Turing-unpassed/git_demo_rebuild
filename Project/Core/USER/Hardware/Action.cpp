@@ -7,7 +7,7 @@ Action::Action(UART_HandleTypeDef *huart,bool enableCrcCheck, int8_t install_pos
     
 }
 
-void Action::Action_Info_Update(){
+void Action::Action_Info_Update(){           //用共用体将接收到的字节数据解析成Action_Info结构体（4个字节拼成一个float型数据）
     action_info.Angle_Yaw = rx_data.data[0];
     action_info.Angle_Pitch = rx_data.data[1];
     action_info.Angle_Roll = rx_data.data[2];

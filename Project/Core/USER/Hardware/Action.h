@@ -26,7 +26,8 @@ extern "C"
 #define ACTION_DATA_LENGTH 24  // 数据段长度（24字节）
 #define ACTION_FRAME_LENGTH 28 // 整个包的长度（头+数据+尾）
 
-/*机器人坐标和全局坐标定义:机器人前方为y轴正方向，机器人左侧为x轴正方向，角速度顺时针为正，角度范围为顺时针0到180，逆时针0到-180*/
+/*机器人坐标和世界坐标定义:机器人前方为y轴正方向，机器人右侧为x轴正方向，角速度顺时针为正，
+                                            角度范围为顺时针0到180，逆时针0到-180*/            
 
 typedef struct {
     float Position_X; // 机器人x坐标
@@ -37,23 +38,24 @@ typedef struct {
     float Angle_Yaw;    // 机器人z轴角度 (偏航角)
 }Action_Info;
 
-typedef union{
-    float data[ACTION_DATA_LENGTH/4];
-    uint8_t byte[ACTION_DATA_LENGTH];
-}Action_RxData;
+typedef union{                          //储存action位姿信息的数组
+    float data[ACTION_DATA_LENGTH/4];   //data[0]:航向角 data[1]:俯仰角 data[2]:横滚角
+    uint8_t byte[ACTION_DATA_LENGTH];   //data[3]:x坐标 data[4]:y坐标 data[5]:角速度
+}Action_RxData;         //action原始字节数据
 
 class Action :public SerialDevice
 {
 public:
-    Action(UART_HandleTypeDef *huart, bool enableCrcCheck =true, int8_t install_position_x_ = 0, int8_t install_position_y_ = 0);
+    Action(UART_HandleTypeDef *huart, bool enableCrcCheck =true,
+                int8_t install_position_x_ = 0, int8_t install_position_y_ = 0);
     void Action_Info_Update();
     void handleReceiveData(uint8_t byte);
 private:
     uint8_t rxIndex = 0;
-    Action_Info action_info;
-    Action_RxData rx_data;
-    int8_t install_position_x;
-    int8_t install_position_y;
+    Action_Info action_info;    // 机器人姿态信息结构体
+    Action_RxData rx_data;     // 接收到的action数据共用体
+    int8_t install_position_x;  // action安装位置与机器人原点的x轴距离
+    int8_t install_position_y;  // action安装位置与机器人原点的y轴距离
     enum RxState
     {
         WAITING_FOR_HEADER_0,
